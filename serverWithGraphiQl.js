@@ -1,7 +1,8 @@
+const express = require("express");
 const { buildSchema, graphql } = require("graphql");
+const { graphqlHTTP } = require("express-graphql");
 
 const app = express();
-
 
 // build schema
 const schema = buildSchema(` 
@@ -18,15 +19,20 @@ const rootValue = {
   email: "munna.cse.pust@gmail.com",
 };
 
-// query
-graphql({
-  // schema name
-  schema,
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: schema,
+    rootValue: rootValue,
+    graphiql: true,
+  })
+);
 
-  // query
-  //   source name must be match the any name of Query's property in buildSchema
-  source: "{name, email}",
+app.use("/", (req, res) => {
+  res.send("Home Page");
+});
 
-  // resolver
-  rootValue,
-}).then((res) => console.log("Query Response ::", res));
+const PORT = 5000;
+app.listen(5000, () => {
+  console.log(`server is running at ${PORT}...`);
+});
