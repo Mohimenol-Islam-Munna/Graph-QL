@@ -1,20 +1,47 @@
-import { useQuery } from "@apollo/client";
-import { EXCHANGE_RATES } from "../index";
+import { useQuery, gql } from "@apollo/client";
+
+// query
+const GET_CHARACTER = gql`
+  query {
+    characters {
+      results {
+        id
+        name
+        gender
+      }
+    }
+  }
+`;
 
 const ExchangeRates = () => {
   // fetch data using useQuery hook
-  const { loading, error, data } = useQuery(EXCHANGE_RATES);
+  const { loading, error, data } = useQuery(GET_CHARACTER);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  console.log("character list from graphqpl :::", { loading, error, data });
 
-  return data.rates.map(({ currency, rate }) => (
-    <div key={currency}>
-      <p>
-        {currency}: {rate}
-      </p>
+  return (
+    <div
+      style={{
+        width: "60%",
+        margin: "auto",
+      }}
+    >
+      {data &&
+        data.characters.results.map((item) => (
+          <div
+            key={item.id}
+            style={{
+              border: "1px solid salmon",
+              margin: "5px",
+              borderRadius: "10px",
+            }}
+          >
+            <h4>{item.name}</h4>
+            <p>{item.gender}</p>
+          </div>
+        ))}
     </div>
-  ));
+  );
 };
 
 export default ExchangeRates;
