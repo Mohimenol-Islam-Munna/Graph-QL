@@ -2,7 +2,6 @@ const { buildSchema, graphql } = require("graphql");
 
 const app = express();
 
-
 // build schema
 const schema = buildSchema(` 
     type Query {
@@ -12,7 +11,7 @@ const schema = buildSchema(`
 `);
 
 // resolver(object of fucntion)
-// * method's name in resolver must be match the any name of Query's property in buildSchema
+// * method's name in resolver must be match to any name of Query's property in buildSchema
 const rootValue = {
   name: () => "Mohimenol Islam Munna",
   email: "munna.cse.pust@gmail.com",
@@ -24,7 +23,7 @@ graphql({
   schema,
 
   // query
-  //   source name must be match the any name of Query's property in buildSchema
+  // source name must be match to any name of Query's property in buildSchema
   source: "{name, email}",
 
   // resolver
