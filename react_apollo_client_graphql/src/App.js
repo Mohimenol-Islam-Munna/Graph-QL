@@ -1,6 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import ExchangeRates from "./Components/ExChangeRates";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Characters from "./Components/Characters";
+import Character from "./Components/Character";
+import Home from "./Components/Home";
 
 function App() {
   return (
@@ -8,9 +10,13 @@ function App() {
       <header className="App-header">
         <h2>React Apollo Client GraphQl</h2>
       </header>
-      <div>
-        <ExchangeRates />
-      </div>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="characters" element={<Characters />}>
+          <Route path=":id" element={<Character />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
