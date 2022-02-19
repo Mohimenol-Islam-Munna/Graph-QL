@@ -17,6 +17,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+// query 
 export const EXCHANGE_RATES = gql`
   query GetExchangeRates {
     rates(currency: "USD") {
