@@ -2,11 +2,11 @@ import { gql, useQuery } from "@apollo/client";
 
 // query
 const GET_CHARACTERS = gql`
-  query {
+  query MallQ($withName: Boolean!) {
     characters {
       results {
         id
-        name
+        name @include(if: $withName)
         gender
         image
       }
@@ -14,8 +14,12 @@ const GET_CHARACTERS = gql`
   }
 `;
 
-const useCharacters = () => {
-  const { loading, error, data } = useQuery(GET_CHARACTERS);
+const useCharacters = (g) => {
+  const { loading, error, data } = useQuery(GET_CHARACTERS, {
+    variables: {
+      withName: true,
+    },
+  });
 
   return {
     loading,

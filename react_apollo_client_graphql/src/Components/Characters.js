@@ -1,12 +1,12 @@
-import useCharacters from "../apolloClient/useCharacters";
 import { Routes, Route, Link, useParams } from "react-router-dom";
+import useCharacters from "../apolloClient/useCharacters";
 import Character from "./Character";
 
 const Characters = () => {
-  const { loading, error, data } = useCharacters();
+  const { loading, error, data } = useCharacters(21);
   const params = useParams();
 
-  console.log("dynamic id ::", params);
+  console.log("filter data ::", data);
 
   return (
     <Routes>
