@@ -3,10 +3,8 @@ import useCustomer from "../apolloClient/useCustomers";
 
 const Customers = () => {
   const [fetchCustomersData, { loading, error, data }] = useCustomer();
-  console.log("data asche :: ", data);
 
   if (loading) {
-    console.log("data asche 2 :: ", loading);
     return <h2>Loading...</h2>;
   }
 

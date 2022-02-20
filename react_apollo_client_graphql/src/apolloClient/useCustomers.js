@@ -18,8 +18,10 @@ const GET_ALL_CUSTOMERS = gql`
 `;
 
 const useCustomer = () => {
-  const [fetchCustomersData, { loading, error, data }] =
-    useLazyQuery(GET_ALL_CUSTOMERS);
+  const [fetchCustomersData, { loading, error, data }] = useLazyQuery(
+    GET_ALL_CUSTOMERS,
+    { fetchPolicy: "cache-first" }
+  );
 
   return [
     fetchCustomersData,
