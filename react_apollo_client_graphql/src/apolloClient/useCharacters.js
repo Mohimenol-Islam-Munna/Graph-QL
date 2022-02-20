@@ -15,9 +15,10 @@ const GET_CHARACTERS = gql`
 `;
 
 const useCharacters = (g) => {
-  const { loading, error, data } = useQuery(GET_CHARACTERS, {
+  const { loading, error, data, refetch } = useQuery(GET_CHARACTERS, {
     variables: {
       withName: true,
+      pollInterval: 500,
     },
   });
 
@@ -25,6 +26,7 @@ const useCharacters = (g) => {
     loading,
     error,
     data,
+    refetch
   };
 };
 

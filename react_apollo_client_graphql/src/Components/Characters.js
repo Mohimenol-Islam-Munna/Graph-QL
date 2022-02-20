@@ -3,7 +3,7 @@ import useCharacters from "../apolloClient/useCharacters";
 import Character from "./Character";
 
 const Characters = () => {
-  const { loading, error, data } = useCharacters(21);
+  const { loading, error, data, refetch } = useCharacters();
   const params = useParams();
 
   console.log("filter data ::", data);
@@ -14,7 +14,9 @@ const Characters = () => {
         path="/"
         element={
           <div style={{ width: "60%", margin: "10px auto" }}>
-            {" "}
+            <div>
+              <button onClick={() => refetch()}>Refetch</button>
+            </div>
             {data &&
               data.characters.results.map((item) => (
                 <div
