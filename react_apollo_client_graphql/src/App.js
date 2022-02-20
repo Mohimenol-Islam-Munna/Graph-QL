@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Characters from "./Components/Characters";
 import Character from "./Components/Character";
+import Customers from "./Components/Customers";
 import Home from "./Components/Home";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="characters" element={<Characters />}>
           <Route path=":id" element={<Character />} />
         </Route>
+        <Route path="customers/" element={<Customers />} />
       </Routes>
     </div>
   );
