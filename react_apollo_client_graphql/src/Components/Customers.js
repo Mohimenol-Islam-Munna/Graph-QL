@@ -20,23 +20,30 @@ const Customers = () => {
               <button onClick={fetchCustomersData}>Fetch Customer</button>
             </div>
 
-            {data && (
-              <div
-                style={{
-                  border: "1px solid salmon",
-                  margin: "5px",
-                  padding: "5px",
-                  borderRadius: "10px",
-                }}
-              >
-                <h4>{data.viewer.customer.companyName}</h4>
-                <p>{data.viewer.customer.contactName}</p>
+            {data &&
+              data.viewer.employeeList.map((employee) => (
+                <div
+                  style={{
+                    border: "1px solid salmon",
+                    margin: "5px",
+                    padding: "5px",
+                    borderRadius: "10px",
+                  }}
+                  key={employee.employeeID}
+                >
+                  <h3>Title : {employee.title}</h3>
+                  <h4>Name : {employee.firstName + " " + employee.lastName}</h4>
+                  <p>
+                    Address :{" "}
+                    {employee.address &&
+                      employee.address.city + " , " + employee.address.country}
+                  </p>
 
-                <div style={{ margin: "20px auto" }}>
-                  <Link to={`${data.viewer.customer.customerID}`}>Details</Link>
+                  <div style={{ margin: "20px auto" }}>
+                    <Link to={`${employee.employeeID}`}>Details</Link>
+                  </div>
                 </div>
-              </div>
-            )}
+              ))}
           </div>
         }
       />

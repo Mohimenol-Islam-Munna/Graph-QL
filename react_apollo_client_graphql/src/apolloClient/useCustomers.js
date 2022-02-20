@@ -3,10 +3,15 @@ import { gql, useLazyQuery } from "@apollo/client";
 const GET_ALL_CUSTOMERS = gql`
   query {
     viewer {
-      customer {
-        customerID
-        companyName
-        contactName
+      employeeList {
+        employeeID
+        firstName
+        lastName
+        title
+        address {
+          city
+          country
+        }
       }
     }
   }
