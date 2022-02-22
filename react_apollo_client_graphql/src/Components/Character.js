@@ -1,10 +1,11 @@
+import React from "react";
 import useCharacter from "../apolloClient/useCharacter";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Character = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const { loading, error, data } = useCharacter(params.id);
+  const { loading, data } = useCharacter(params.id);
 
   const goBackHandler = () => {
     console.log("go back handler");
@@ -39,7 +40,7 @@ const Character = () => {
         >
           <h4>{data.character.name}</h4>
           <p>{data.character.gender}</p>
-          <img src={data.character.image} />
+          <img src={data.character.image} alt="character data"/>
         </div>
       )}
     </div>

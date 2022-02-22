@@ -4,7 +4,7 @@ import useCharacters from "../apolloClient/useCharacters";
 
 const CharactersHome = () => {
   const navigate = useNavigate();
-  const { loading, error, data, refetch } = useCharacters();
+  const { loading, data, refetch } = useCharacters();
 
   if (loading) {
     return <h5>Loading...</h5>;
@@ -34,7 +34,7 @@ const CharactersHome = () => {
             <h4>{item.name}</h4>
             <p>{item.gender}</p>
             <div>
-              <img src={item.image} />
+              <img src={item.image} alt="chareacter"/>
             </div>
             <div style={{ margin: "20px auto" }}>
               <Link to={`${item.id}`}>Details</Link>

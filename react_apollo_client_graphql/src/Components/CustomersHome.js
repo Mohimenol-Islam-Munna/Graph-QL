@@ -1,9 +1,9 @@
 import React from "react";
-import { Routes, Route, Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useCustomer from "../apolloClient/useCustomers";
 
 const CustomersHome = () => {
-  const [fetchCustomersData, { loading, error, data }] = useCustomer();
+  const [fetchCustomersData, { loading,data }] = useCustomer();
 
   return (
     <div style={{ width: "60%", margin: "10px auto" }}>
@@ -38,7 +38,9 @@ const CustomersHome = () => {
             </p>
 
             <div style={{ margin: "20px auto" }}>
-              <Link to={`${employee.employeeID}`} className="btn btn-info">Details</Link>
+              <Link to={`${employee.employeeID}`} className="btn btn-info">
+                Details
+              </Link>
             </div>
           </div>
         ))}

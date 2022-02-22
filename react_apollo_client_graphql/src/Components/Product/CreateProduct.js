@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import useCreateProductMutaion from "../../apolloClient/Product/useCreateProductMutaion";
 
 const CreateProduct = () => {
-  const { createProductHandler, loading, error, data } =
+  const { createProductHandler, loading, data } =
     useCreateProductMutaion();
 
   // catch form field data by useRef
