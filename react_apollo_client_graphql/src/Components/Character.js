@@ -23,7 +23,9 @@ const Character = () => {
       }}
     >
       <h3>Single Character</h3>
-      <button onClick={goBackHandler}>GoBack</button>
+      <button onClick={goBackHandler} className="btn btn-warning mx-2">
+        GoBack
+      </button>
 
       {data && (
         <div

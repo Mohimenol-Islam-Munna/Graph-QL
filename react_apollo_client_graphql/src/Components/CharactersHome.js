@@ -1,18 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useCharacters from "../apolloClient/useCharacters";
 
 const CharactersHome = () => {
+  const navigate = useNavigate();
   const { loading, error, data, refetch } = useCharacters();
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <h5>Loading...</h5>;
   }
 
   return (
     <div style={{ width: "60%", margin: "10px auto" }}>
       <div>
-        <button onClick={() => refetch()}>Refetch</button>
+        <button onClick={() => navigate(-1)} className="btn btn-warning mx-2">
+          GoBack
+        </button>
+        <button onClick={() => refetch()} className="btn btn-success mx-2">
+          Refetch
+        </button>
       </div>
       {data &&
         data.characters.results.map((item) => (

@@ -5,6 +5,9 @@ import CharactersHome from "./Components/CharactersHome";
 import Character from "./Components/Character";
 import Customers from "./Components/Customers";
 import CustomersHome from "./Components/CustomersHome";
+import Product from "./Components/Product/Product";
+import AllProduct from "./Components/Product/AllProduct";
+import CreateProduct from "./Components/Product/CreateProduct";
 import Home from "./Components/Home";
 
 function App() {
@@ -22,6 +25,10 @@ function App() {
         </Route>
         <Route path="/customers" element={<Customers />}>
           <Route index element={<CustomersHome />} />
+        </Route>
+        <Route path="/product" element={<Product />}>
+          <Route path="all-product" element={<AllProduct />} />
+          <Route path="create-product" element={<CreateProduct />} />
         </Route>
         <Route path="*" element={<h2>404 Path Not Found</h2>} />
       </Routes>
