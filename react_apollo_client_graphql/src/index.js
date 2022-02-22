@@ -22,7 +22,7 @@ const httpLink = new HttpLink({
 
 // subscription link
 const wsLink = new WebSocketLink({
-  uri: "ws://graphql-compose.herokuapp.com/northwind",
+  uri: "wss://graphql-compose.herokuapp.com/northwind",
   options: {
     reconnect: true,
   },

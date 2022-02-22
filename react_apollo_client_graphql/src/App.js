@@ -9,6 +9,7 @@ import CustomersHome from "./Components/CustomersHome";
 import Product from "./Components/Product/Product";
 import AllProduct from "./Components/Product/AllProduct";
 import CreateProduct from "./Components/Product/CreateProduct";
+import ProductSubscription from "./Components/Product/ProductSubscription";
 import Home from "./Components/Home";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="all-product" element={<AllProduct />} />
           <Route path="create-product" element={<CreateProduct />} />
         </Route>
+        <Route path="/product-subscription" element={<ProductSubscription />} />
         <Route path="*" element={<h2>404 Path Not Found</h2>} />
       </Routes>
     </div>

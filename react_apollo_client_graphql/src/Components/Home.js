@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Home() {
+const Home = () => {
   return (
     <div>
       <h3>Home Component</h3>
@@ -18,6 +18,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;
