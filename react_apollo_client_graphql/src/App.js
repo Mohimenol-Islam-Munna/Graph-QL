@@ -1,8 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Characters from "./Components/Characters";
+import CharactersHome from "./Components/CharactersHome";
 import Character from "./Components/Character";
 import Customers from "./Components/Customers";
+import CustomersHome from "./Components/CustomersHome";
 import Home from "./Components/Home";
 
 function App() {
@@ -14,10 +16,14 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="characters" element={<Characters />}>
+        <Route path="/characters" element={<Characters />}>
+          <Route index element={<CharactersHome />} />
           <Route path=":id" element={<Character />} />
         </Route>
-        <Route path="customers/" element={<Customers />} />
+        <Route path="/customers" element={<Customers />}>
+          <Route index element={<CustomersHome />} />
+        </Route>
+        <Route path="*" element={<h2>404 Path Not Found</h2>} />
       </Routes>
     </div>
   );

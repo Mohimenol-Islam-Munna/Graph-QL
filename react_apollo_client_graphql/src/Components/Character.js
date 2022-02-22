@@ -1,11 +1,19 @@
 import useCharacter from "../apolloClient/useCharacter";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Character = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const { loading, error, data } = useCharacter(params.id);
 
-  console.log("params ::", params);
+  const goBackHandler = () => {
+    console.log("go back handler");
+    navigate(-1);
+  };
+
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
   return (
     <div
@@ -14,6 +22,9 @@ const Character = () => {
         margin: "auto",
       }}
     >
+      <h3>Single Character</h3>
+      <button onClick={goBackHandler}>GoBack</button>
+
       {data && (
         <div
           key={data.character.id}

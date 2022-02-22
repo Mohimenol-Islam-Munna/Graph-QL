@@ -14,7 +14,7 @@ const GET_CHARACTERS = gql`
   }
 `;
 
-const useCharacters = (g) => {
+const useCharacters = () => {
   const { loading, error, data, refetch } = useQuery(GET_CHARACTERS, {
     variables: {
       withName: true,
