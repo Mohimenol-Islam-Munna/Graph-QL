@@ -1,10 +1,12 @@
 import "../styles/globals.css";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import "bootstrap/dist/css/bootstrap.css";
 
 export const client = new ApolloClient({
-  uri: "https://rickandmortyapi.com/graphql",
+  uri: "https://graphql-compose.herokuapp.com/northwind",
   cache: new InMemoryCache(),
 });
+
 
 function MyApp({ Component, pageProps }) {
   return (
