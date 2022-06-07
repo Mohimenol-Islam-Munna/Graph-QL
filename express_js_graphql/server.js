@@ -9,10 +9,17 @@ const app = express();
 // build graphql schema
 const schema = buildSchema(`
 
+    enum GENDER {
+        Male 
+        Female
+        Others
+    }
+
     type Student {
         id: ID,
         name: String,
         className: String,
+        gender: GENDER
     }
 
     type Campus {
@@ -27,6 +34,7 @@ const schema = buildSchema(`
         zila: String
     }
 
+
     type Query {
         hello: String,
         name: String,
@@ -34,11 +42,11 @@ const schema = buildSchema(`
         cgpa: Float,
         students: [Student],
         student(id: ID): Student,
-        university: University
+        university: University,
     }
 
     type Mutation {
-        addStudent(id: ID, name: String, className: String): [Student],
+        addStudent(id: ID, name: String, className: String, gender: GENDER): [Student],
     }
 `);
 
@@ -66,7 +74,7 @@ const root = {
     return singleStudent;
   },
 
-  addStudent: ({ id, name, className }) => {
+  addStudent: ({ id, name, className, gender }) => {
     console.log("id", id);
     console.log("name", name);
     console.log("className", className);
@@ -74,6 +82,7 @@ const root = {
       id: id,
       name: name,
       className: className,
+      gender: gender,
     });
     return students;
   },
