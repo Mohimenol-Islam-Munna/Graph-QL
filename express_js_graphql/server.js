@@ -36,6 +36,10 @@ const schema = buildSchema(`
         student(id: ID): Student,
         university: University
     }
+
+    type Mutation {
+        addStudent(id: ID, name: String, className: String): [Student],
+    }
 `);
 
 // resolver
@@ -60,6 +64,18 @@ const root = {
   student: ({ id }) => {
     const singleStudent = students.find((item) => item.id == id);
     return singleStudent;
+  },
+
+  addStudent: ({ id, name, className }) => {
+    console.log("id", id);
+    console.log("name", name);
+    console.log("className", className);
+    students.push({
+      id: id,
+      name: name,
+      className: className,
+    });
+    return students;
   },
 
   university: () => {
