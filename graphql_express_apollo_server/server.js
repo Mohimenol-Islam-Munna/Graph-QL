@@ -9,7 +9,7 @@ async function startServer() {
   // create express application
   const app = express();
 
-  // to access .env file in express application
+  // use to access .env file in express application
   const config = dotenv.config();
 
   // create apollo server instance

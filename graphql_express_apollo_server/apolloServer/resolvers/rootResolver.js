@@ -2,40 +2,41 @@ const Student = require("../../models/student");
 
 const rootResolver = {
   Query: {
-    name: () => {
-      return "Md Mohimenol Islam Munna";
-    },
-    age: () => {
-      return 26;
-    },
-    cgpa: () => {
-      return 3.33;
-    },
-
-    university: () => {
+    student: () => {
       return {
-        area: "30 ekor",
-        zila: "Pabna",
-        info: {
-          name: "PUST",
-          u_type: ["Public University", "science and technology"],
-        },
+        name: "Md Mohimenol Islam Munna 33",
+        age: 26,
+        university: {},
       };
     },
   },
 
   Mutation: {
-    addStudent: ({ id, name, className, gender }) => {
-      console.log("id", id);
-      console.log("name", name);
-      console.log("className", className);
-      students.push({
-        id: id,
+    createStudent: async (parent, args, context, info) => {
+      const { name, age, cgpa, uName, uArea, uZila, uType } = args.inputStudent;
+
+      console.log("args.inputStudent:", args.inputStudent);
+
+      const student = new Student({
         name: name,
-        className: className,
-        gender: gender,
+        age: age,
+        cgpa: cgpa,
+        university: {
+          uName: uName,
+          uArea: uArea,
+          uZila: uZila,
+          uType: uType,
+        },
       });
-      return students;
+
+      try {
+        const res = await student.save();
+        console.log("saved student success:", res);
+        return res;
+      } catch (err) {
+        console.log("saved student err :", err);
+        return null;
+      }
     },
   },
 };

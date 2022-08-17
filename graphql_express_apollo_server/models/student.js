@@ -5,6 +5,7 @@ const studentSchema = new Schema({
   name: {
     type: String,
     required: [true, "please provide your name"],
+    unique: [true, "please provide unique name"],
   },
   age: {
     type: Number,
@@ -13,21 +14,19 @@ const studentSchema = new Schema({
     type: Number,
     required: [true, "please provide your cgpa"],
   },
-
   gender: {
     type: String,
     enum: ["Male", "Female", "Others"],
     default: "Others",
   },
-
   university: {
-    name: {
+    uName: {
       type: String,
-      required: [true, "Please provide university name"],
+      required: [true, "please provide university name"],
     },
-    area: String,
-    zila: String,
-    type: String,
+    uArea: String,
+    uZila: String,
+    uType: String,
   },
 });
 

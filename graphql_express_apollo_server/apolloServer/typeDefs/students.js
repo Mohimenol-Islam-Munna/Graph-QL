@@ -7,34 +7,39 @@ const studentTypeDefs = gql`
     Others
   }
 
+  type University {
+    uName: String
+    uArea: String
+    uZila: String
+    uType: String
+  }
+
   type Student {
     id: ID
     name: String
-    className: String
-    gender: GENDER
-  }
-
-  type University {
-    name: String
-    area: String
-    zila: String
-    type: String
-  }
-
-  type Query {
-    name: String
-    age: Int
+    age: Float
     cgpa: Float
+    gender: GENDER
     university: University
   }
 
+  input CreateStudent {
+    name: String
+    age: Float
+    cgpa: Float
+    gender: GENDER
+    uName: String
+    uArea: String
+    uZila: String
+    uType: String
+  }
+
+  type Query {
+    student: Student
+  }
+
   type Mutation {
-    addStudent(
-      id: ID
-      name: String
-      className: String
-      gender: GENDER
-    ): [Student]
+    createStudent(inputStudent: CreateStudent): Student
   }
 `;
 
