@@ -2,3 +2,8 @@ basic_graphql_server/node_modules
 next_apollo_client_graphql/node_modules
 react_apollo_client_graphql/node_modules
 graphql_express_apollo_server/node_modules
+
+basic_graphql_server/.env
+next_apollo_client_graphql/.env
+react_apollo_client_graphql/.env
+graphql_express_apollo_server/.env
