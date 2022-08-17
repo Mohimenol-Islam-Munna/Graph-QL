@@ -2,20 +2,30 @@ const Student = require("../../models/student");
 
 const rootResolver = {
   Query: {
-    student: () => {
-      return {
-        name: "Md Mohimenol Islam Munna 33",
-        age: 26,
-        university: {},
-      };
+    students: async () => {
+      try {
+        const result = await Student.find();
+        return result;
+      } catch (err) {
+        console.log("all student fetch err ::", err);
+        return null;
+      }
+    },
+
+    student: async (parent, args, context, info) => {
+      try {
+        const result = await Student.findById(args.id);
+        return result;
+      } catch (err) {
+        console.log("fetch single student err ::", err);
+        return null;
+      }
     },
   },
 
   Mutation: {
     createStudent: async (parent, args, context, info) => {
       const { name, age, cgpa, uName, uArea, uZila, uType } = args.inputStudent;
-
-      console.log("args.inputStudent:", args.inputStudent);
 
       const student = new Student({
         name: name,
@@ -31,7 +41,6 @@ const rootResolver = {
 
       try {
         const res = await student.save();
-        console.log("saved student success:", res);
         return res;
       } catch (err) {
         console.log("saved student err :", err);
