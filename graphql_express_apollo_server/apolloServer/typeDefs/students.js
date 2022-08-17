@@ -14,24 +14,17 @@ const studentTypeDefs = gql`
     gender: GENDER
   }
 
-  type Campus {
-    name: String
-    u_type: [String]
-  }
-
   type University {
-    info: Campus
+    name: String
     area: String
     zila: String
+    type: String
   }
 
   type Query {
-    hello: String
     name: String
     age: Int
     cgpa: Float
-    students: [Student]
-    student(id: ID): Student
     university: University
   }
 

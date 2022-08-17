@@ -1,8 +1,7 @@
+const Student = require("../../models/student");
+
 const rootResolver = {
   Query: {
-    hello: () => {
-      return "hello graphql world!";
-    },
     name: () => {
       return "Md Mohimenol Islam Munna";
     },
@@ -11,15 +10,6 @@ const rootResolver = {
     },
     cgpa: () => {
       return 3.33;
-    },
-
-    students: () => {
-      return students;
-    },
-
-    student: ({ id }) => {
-      const singleStudent = students.find((item) => item.id == id);
-      return singleStudent;
     },
 
     university: () => {
