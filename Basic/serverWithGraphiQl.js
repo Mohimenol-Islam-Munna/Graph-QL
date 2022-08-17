@@ -1,5 +1,5 @@
 const express = require("express");
-const { buildSchema, graphql } = require("graphql");
+const { buildSchema } = require("graphql");
 const { graphqlHTTP } = require("express-graphql");
 
 const app = express();
@@ -18,7 +18,7 @@ const rootValue = {
   name: () => "Mohimenol Islam Munna",
   email: "munna.cse.pust@gmail.com",
 };
- 
+
 app.use(
   "/graphql",
   graphqlHTTP({

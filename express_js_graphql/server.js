@@ -8,7 +8,6 @@ const app = express();
 
 // build graphql schema
 const schema = buildSchema(`
-
     enum GENDER {
         Male 
         Female
